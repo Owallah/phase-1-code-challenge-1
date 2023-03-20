@@ -98,8 +98,13 @@ https://www.kra.go.ke/en/individual/calculate-tax/calculating-tax/payeLinks to a
 */
 
 function generateNetSalary(event) {
+    //this line prevents the page from default refreshing
     event.preventDefault()
 
+    /**
+     * bellow I get inputs from the gross salary and benefits
+     * I then parse them to floating point numbers
+     */
     let grossInput = parseFloat(document.getElementById("gross-input").value)
     let benefitsInput = parseFloat(document.getElementById("benefits-input").value)
 
@@ -119,20 +124,27 @@ function generateNetSalary(event) {
     else if (grossInput < 0) {
         result = "Invalid input"
     }
-
+/**
+ * bellow I first call the nhif function and pass in the gross salary
+ * I then calculate all deductions including tax, nhif and nssf
+ * I then calculate the net salary by taking the gross  salary subtract all deductions and add benefits
+ */
     let nhif = calculateNHIF(grossInput)
     let deductions = tax + nhif + nssf
-    let netSalary = grossInput + benefitsInput - deductions
+    let netSalary = grossInput - deductions + benefitsInput 
     result = `Your net salary is: ${netSalary}`
 
+    //return the result to be displayed in the output area
     return document.querySelector("#salary-output").innerHTML = result
 
 }
-
+/*
+The function bellow calculates the nhif contribution one has to pay
+according to their pensionable gross salary
+*/
 function calculateNHIF(grossInput) {
 
     let nhif = 0
-    let result = ""
 
     if (grossInput <= 5999) {
         nhif = 150
@@ -189,6 +201,7 @@ function calculateNHIF(grossInput) {
         result = "Invalid input"
     }
 
+    //return the value of nhif
     return nhif;
 }
 
