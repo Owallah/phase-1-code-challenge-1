@@ -21,8 +21,36 @@
             <p id="score-output">The student's grade is:</p>
         </form>
     </div>
-    <div></div>
-    <div></div>
+    
+    <div class="generate-points">
+
+        <h3>Challenge 2: Speed Detector (Toy Problem)</h3>
+        <p>program that takes as input the speed of a car e.g 80. If the speed is less than 70, it should print “Ok”. Otherwise, for every 5 km/s above the speed limit (70), it should give the driver one demerit point and print the total number of demerit points.: </p>
+        <form>
+            <label>Enter Your Speed</label>
+            <input type="text" id="speed-input"><br>
+
+            <button id="btn-generate-points" onclick="generatePoints(event)">Generate Points</button>
+            <p id="points-output"></p>
+        </form>
+
+    </div>
+
+    <div class="generate-net-salary">
+
+        <h3>Challenge 3: Net Salary Calculator (Toy Problem)</h3>
+        <p>program whose major task is to calculate an individual’s Net Salary by getting the inputs of basic salary and benefits. Calculate the payee (i.e. Tax), NHIFDeductions, NSSFDeductions, gross salary, and net salary. : </p>
+        <form>
+            <label>Enter Your Gross Salary</label>
+            <input type="number" id="gross-input"><br>
+            <label>Enter Your Benefits</label>
+            <input type="number" id="benefits-input"><br>
+
+            <button id="btn-generate-net-salary" onclick="generateNetSalary(event)">Generate Net Salary</button>
+            <p id="salary-output"></p>
+        </form>
+
+    </div>
     <script src="./js/index.js"></script>
 </body>
 </html>
